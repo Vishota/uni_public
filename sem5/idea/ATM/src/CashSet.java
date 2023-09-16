@@ -1,17 +1,17 @@
 import java.util.Objects;
 
 public final class CashSet {
-    private int cash20;
-    private int cash50;
-    private int cash100;
+    private long cash20;
+    private long cash50;
+    private long cash100;
 
-    public CashSet(int cash20, int cash50, int cash100) {
+    public CashSet(long cash20, long cash50, long cash100) {
         this.cash20 = cash20;
         this.cash50 = cash50;
         this.cash100 = cash100;
     }
 
-    int toNumber() {
+    long toNumber() {
         return this.cash20 * 20 + this.cash50 * 50 + this.cash100 * 100;
     }
 
@@ -20,16 +20,21 @@ public final class CashSet {
         this.cash50 += cash.cash50;
         this.cash20 += cash.cash20;
     }
+    public void subtract(CashSet cash) {
+        this.cash100 -= cash.cash100;
+        this.cash50 -= cash.cash50;
+        this.cash20 -= cash.cash20;
+    }
 
-    public int cash20() {
+    public long cash20() {
         return cash20;
     }
 
-    public int cash50() {
+    public long cash50() {
         return cash50;
     }
 
-    public int cash100() {
+    public long cash100() {
         return cash100;
     }
 
@@ -41,11 +46,6 @@ public final class CashSet {
         return this.cash20 == that.cash20 &&
                 this.cash50 == that.cash50 &&
                 this.cash100 == that.cash100;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cash20, cash50, cash100);
     }
 
     @Override
