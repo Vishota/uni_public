@@ -36,7 +36,7 @@ public class ATM {
         long need100 = amount / 100;
         long take100 = Math.min(storage.cash100(), need100);
         need100 -= take100;
-        long take50 = Math.min(storage.cash50(), need100 * 2);
+        long take50 = Math.min(storage.cash50() / 2 * 2, need100 * 2);
         amount -= take100*100 + take50*50;
         long take20 = amount / 20;
 
